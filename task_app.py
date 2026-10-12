@@ -28,6 +28,9 @@ def mark_done(index):
         tasks[index]["done"] = True
         save_tasks(tasks)
 
+def filter_by_status(tasks, done):
+    return [t for t in tasks if t.get("done", False) == done]
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("usage: task_app.py add <title>")
