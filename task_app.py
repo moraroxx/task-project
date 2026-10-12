@@ -22,6 +22,12 @@ def add_task(title):
     tasks.append({"title": title, "priority": DEFAULT_PRIORITY, "done": False})
     save_tasks(tasks)
 
+def mark_done(index):
+    tasks = load_tasks()
+    if 0 <= index < len(tasks):
+        tasks[index]["done"] = True
+        save_tasks(tasks)
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("usage: task_app.py add <title>")
