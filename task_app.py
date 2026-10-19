@@ -3,7 +3,15 @@
 import json
 import sys
 
-DEFAULT_PRIORITY = "normal" # значение по умолчанию
+DEFAULT_PRIORITY = "normal"  # значение по умолчанию; переопределяется --priority
+
+def parse_args(argv):
+    priority = DEFAULT_PRIORITY
+    if "--priority" in argv:
+        i = argv.index("--priority")
+        priority = argv[i + 1]
+    return priority
+
 DATA_FILE = "tasks.json"
 
 def load_tasks(path=DATA_FILE):
