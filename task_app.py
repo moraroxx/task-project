@@ -31,6 +31,20 @@ def mark_done(index):
 def filter_by_status(tasks, done):
     return [t for t in tasks if t.get("done", False) == done]
 
+
+VALID_PRIORITIES = {"low", "normal", "high"}
+
+def validate_priority(value):
+    if value not in VALID_PRIORITIES:
+        raise ValueError(f"invalid priority: {value}")
+    return value
+
+PRIORITY_ORDER = {"high": 0, "normal": 1, "low": 2}
+
+def sort_tasks(tasks):
+    return sorted(tasks, key=lambda t: PRIORITY_ORDER.get(t.get("priority", "normal"), 1))
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("usage: task_app.py add <title>")
