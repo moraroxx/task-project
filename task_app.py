@@ -39,6 +39,12 @@ def validate_priority(value):
         raise ValueError(f"invalid priority: {value}")
     return value
 
+PRIORITY_ORDER = {"high": 0, "normal": 1, "low": 2}
+
+def sort_tasks(tasks):
+    return sorted(tasks, key=lambda t: PRIORITY_ORDER.get(t.get("priority", "normal"), 1))
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("usage: task_app.py add <title>")
