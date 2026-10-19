@@ -3,7 +3,7 @@
 import json
 import sys
 
-DEFAULT_PRIORITY = "normal"
+DEFAULT_PRIORITY = "high"
 DATA_FILE = "tasks.json"
 
 def load_tasks(path=DATA_FILE):
